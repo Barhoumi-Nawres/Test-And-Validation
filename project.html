@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>test et validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .green {
+            background-color: lightgreen;
+        }
+
+        .red {
+            background-color: lightcoral;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <label for="moyenne">Moyenne:</label>
+        <input type="number" id="moyenne" min="-100" max="20" step="0.01"
+               oninput="calculateResult()">
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            var moyenne =
+                parseFloat(document.getElementById("moyenne").value);
+
+            var resultElement =
+                document.getElementById("result");
+
+
+
+                var resultat;
+    var backgroundColor;
+
+    if (!isNaN(moyenne) && moyenne >= 0 && moyenne < 10) {
+        resultat = "Rattrapage";
+        backgroundColor = "green";
+    } else if (!isNaN(moyenne) && moyenne >= 10 && moyenne <= 20) {
+        resultat = "ADMIS";
+        backgroundColor = "green";
+    } else {
+        resultat = "Insérez une moyenne entre 0 et 20";
+        backgroundColor = "red";
+    }
+
+    resultElement.textContent = resultat;
+    resultElement.className = backgroundColor === "green" ? "green" : "red";
+}
+</script>
+
+</body>
+</html>
